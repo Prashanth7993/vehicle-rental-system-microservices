@@ -18,6 +18,12 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/Prashanth7993/vehicle-rental-system-microservices.git'
             }
         }
+        stage('Check Workspace') {
+            steps {
+                sh 'ls -l'
+            }
+        }
+
 
         stage('Build & Push Docker Images') {
             steps {
