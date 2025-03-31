@@ -18,19 +18,13 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/Prashanth7993/vehicle-rental-system-microservices.git'
             }
         }
-        stage('Check Workspace') {
-            steps {
-                sh 'ls -l'
-            }
-        }
-
-
         stage('Build & Push Docker Images') {
             steps {
                 script {
                     def services = ["api-gateway", "authentication-service", "bookings-service", "config-server", "coupon-service", "coupon-service", "customer-support", "documents-service", "mail-service", "node-test", "payment-service", "review-service", "service-registry", "user-service", "vehicles-service", "vendor-service" ] // 12 microservices
                     for (s in services) {
                         sh """
+                            cd vehicle-rentals-microservices/$s
                             docker build -t $REGISTRY/$s:$IMAGE_TAG ./$s
                             docker push $REGISTRY/$s:$IMAGE_TAG
                         """
