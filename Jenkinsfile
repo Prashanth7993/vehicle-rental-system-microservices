@@ -22,13 +22,15 @@ pipeline {
             steps {
                 script {
                     def services = ["api-gateway", "authentication-service", "bookings-service", "config-server", "coupon-service", "coupon-service", "customer-support", "documents-service", "mail-service", "node-test", "payment-service", "review-service", "service-registry", "user-service", "vehicles-service", "vendor-service" ] // 12 microservices
-                    for (s in services) {
-                        sh """
-                            cd vehicle-rentals-microservices
-                            docker build -t $REGISTRY/$s:$IMAGE_TAG ./$s
-                            docker push $REGISTRY/$s:$IMAGE_TAG
-                        """
-                    }
+		     withCredentials([usernamePassword(credentialsId: 'Docker_Hub_Credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+			for (s in services) {
+                        	sh """
+                            		cd vehicle-rentals-microservices
+	                            	docker build -t $REGISTRY/$s:$IMAGE_TAG ./$s	
+                            		docker push $REGISTRY/$s:$IMAGE_TAG
+                        	   """
+                        }
+                     }
                 }
             }
         }
