@@ -28,7 +28,7 @@ pipeline {
                             		cd vehicle-rentals-microservices
 	                            	docker build -t $REGISTRY/$s:$IMAGE_TAG ./$s	
 					docker login -u $DOCKER_USER -p  $DOCKER_PASS
-                            		docker push $REGISTRY/$s:$IMAGE_TAG
+                            		docker push prashanth7993/$REGISTRY/$s:$IMAGE_TAG
                         	   """
                         }
                      }
