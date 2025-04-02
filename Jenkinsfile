@@ -18,7 +18,7 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/Prashanth7993/vehicle-rental-system-microservices.git'
             }
         }
-        stage('Build & Push Docker Images') {
+        stage('Build & Push Docker Images Backend') {
             steps {
                 script {
                     def services = ["api-gateway", "authentication-service", "bookings-service", "config-server", "coupon-service", "coupon-service", "customer-support",  "mail-service", "payment-service", "review-service", "service-registry", "user-service", "vehicles-service", "vendor-service" ] // 12 microservices
@@ -31,6 +31,18 @@ pipeline {
 					docker push $DOCKER_USER/$s:$IMAGE_TAG
                         	   """
                         }
+                     }
+                }
+            }
+        }
+        stage('Build & Push Docker Images Frontend'){
+            steps{
+                script{
+		     withCredentials([usernamePassword(credentialsId: 'Docker_Hub_Credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+			sh """
+			cd onthego                        
+			docker login -u $DOCKER_USER -p $DOCKER_PASS 
+                        """
                      }
                 }
             }
