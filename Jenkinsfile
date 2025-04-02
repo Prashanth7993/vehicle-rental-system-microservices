@@ -1,5 +1,5 @@
 pipeline {
-    agent {label 'win-jenkinsslave2'}
+    agent {label 'jenkins-Slave1'}
 
     triggers {
         githubPush()
