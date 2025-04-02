@@ -23,7 +23,7 @@ pipeline {
                 script {
                     def services = ["api-gateway", "authentication-service", "bookings-service", "config-server", "coupon-service", "coupon-service", "customer-support", "documents-service", "mail-service", "node-test", "payment-service", "review-service", "service-registry", "user-service", "vehicles-service", "vendor-service" ] // 12 microservices
 		     withCredentials([usernamePassword(credentialsId: 'Docker_Hub_Credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
-			for (s in services) {
+			for (s in services != 'documents-service') {
                         	sh """
                             		cd vehicle-rentals-microservices
 	                            	docker build -t $DOCKER_USER/$s:$IMAGE_TAG ./$s
