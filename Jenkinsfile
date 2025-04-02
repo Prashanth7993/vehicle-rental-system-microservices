@@ -26,8 +26,8 @@ pipeline {
 			for (s in services) {
                         	sh """
                             		cd vehicle-rentals-microservices
-					docker login -u $DOCKER_USER -p  $DOCKER_PASS
-	                            	docker build -t $s:$IMAGE_TAG ./$s	
+	                            	docker build -t $s:$IMAGE_TAG ./$s
+                                        docker login -u $DOCKER_USER -p  $DOCKER_PASS	
 					docker push $DOCKER_USER/$s:$IMAGE_TAG
                         	   """
                         }
