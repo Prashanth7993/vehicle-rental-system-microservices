@@ -2,7 +2,7 @@ FROM node:18-alpine AS build
 
 WORKDIR /app
 
-rm -rf package-lock.json node_modules
+
 RUN npm install
 CMD ["ng", "version"]
 COPY . .
