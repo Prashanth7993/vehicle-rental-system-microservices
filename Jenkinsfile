@@ -41,9 +41,9 @@ pipeline {
 		     withCredentials([usernamePassword(credentialsId: 'Docker_Hub_Credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
 			sh """
 			cd onthego
-			docker build -t $DOCKER_USER/Frontend-onthego:$IMAGE_TAG .                        
+			docker build -t $DOCKER_USER/frontend-onthego:$IMAGE_TAG .                        
 			docker login -u $DOCKER_USER -p $DOCKER_PASS 
-			docker push $DOCKER_USER/Frontend-onthego:$IMAGE_TAG
+			docker push $DOCKER_USER/frontend-onthego:$IMAGE_TAG
                         """
                      }
                 
