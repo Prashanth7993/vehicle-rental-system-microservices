@@ -27,7 +27,7 @@ pipeline {
                         	sh """
                             		cd vehicle-rentals-microservices
 	                            	docker build -t $DOCKER_USER/$s:$IMAGE_TAG ./$s
-                                        docker login -u $DOCKER_USER --password-stdin	
+                                        docker login -u $DOCKER_USER -p $DOCKER_PASS
 					docker push $DOCKER_USER/$s:$IMAGE_TAG
                         	   """
                         }
