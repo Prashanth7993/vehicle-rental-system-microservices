@@ -2,9 +2,9 @@ FROM node:18-alpine AS build
 
 WORKDIR /app
 
-COPY package.json package-lock.json ./
+rm -rf package-lock.json node_modules
 RUN npm install
-
+CMD ["ng", "version"]
 COPY . .
 RUN npm run build --prod
 
