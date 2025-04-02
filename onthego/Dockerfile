@@ -3,7 +3,7 @@ FROM node:18-alpine AS build
 WORKDIR /app
 
 
-RUN npm install
+RUN "/bin/bash -c npm install"
 CMD ["ng", "version"]
 COPY . .
 RUN npm run build --prod
