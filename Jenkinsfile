@@ -37,7 +37,7 @@ pipeline {
         }
         stage('Build & Push Docker Images Frontend'){
             steps{
-                script{
+                
 		     withCredentials([usernamePassword(credentialsId: 'Docker_Hub_Credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
 			sh """
 			cd onthego
@@ -46,7 +46,7 @@ pipeline {
 			docker push $DOCKER_USER/$Frontend-onthego:$IMAGE_TAG
                         """
                      }
-                }
+                
             }
         }
 
