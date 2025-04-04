@@ -3,7 +3,7 @@ FROM node:18-alpine AS build
 
 WORKDIR /app
 
-# Copy package.json and package-lock.json first for better caching
+# Copy package.json and package-lock.json first (for caching)
 COPY package.json package-lock.json ./
 
 # Install dependencies
@@ -12,7 +12,7 @@ RUN npm install
 # Copy the entire project
 COPY . .
 
-# Build the Angular app (Ensure correct base href)
+# Build the Angular app for production
 RUN npm run build --configuration=production --output-path=dist
 
 # Step 2: Use Nginx to serve the built Angular app
