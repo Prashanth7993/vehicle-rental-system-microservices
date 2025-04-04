@@ -50,10 +50,10 @@ pipeline {
             }
         }
 
-        stage('Deploy to Kubernetes') {
+        stage('Deploying backend kubernetes with Helm') {
             steps {
                 sh """
-                    echo "completed Image building"
+                    helm upgrade --install Microservice-Chart .
                 """
             }
         }
