@@ -1,0 +1,18 @@
+{{- range .Values.images }}
+apiVersion: v1
+kind: Service
+metadata:
+ name: {{ .name }}
+spec:
+ type: {{ $.Values.serviceType }}
+ selector:
+  app: {{ .name }}
+ ports:
+  - protocol: TCP
+    port: {{ .port }}
+    targetPort: {{ .port }}
+    {{- if eq $.Values.serviceType "NodePort" }}
+    nodePort: {{ add 30000 (randInt 0  2767) }}
+    {{- end }}
+---
+{{- end }}
