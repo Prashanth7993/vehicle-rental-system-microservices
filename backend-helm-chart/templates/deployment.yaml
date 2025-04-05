@@ -14,19 +14,16 @@ spec:
     app: {{ .name }}
   spec:
    containers:
-    - name: {{ .name }}
-      image: {{ .image }}
-      ports:
-       - containerPort: {{ .port }}
-      {{- range .Values.images.env }}
-      env:
-        - name: {{ .name }}
-          value: {{ .value }}
-        - name: {{ .name }}
-          value: {{ .value }}
-        - name: {{ .name }}
-          value: {{ .value }}
-      ---
-     {{- end }}
+     - name: {{ .name }}
+       image: {{ .image }}
+       {{- if .env }}
+          env:
+            {{- range .env }}
+            - name: {{ .name }}
+              value: {{ .value | quote }}
+            {{- end }}
+          {{- end }}
+          ports:
+            - containerPort: {{ .port }}
 ---
 {{- end }}
