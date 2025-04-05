@@ -8,7 +8,7 @@ COPY package.json package-lock.json ./
 
 # Install dependencies
 RUN npm install
-RUN npm install  -g @angulanpm
+RUN npm install -g @angular/cli
 
 # startp]ject
 COPY . .
