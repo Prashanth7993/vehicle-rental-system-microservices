@@ -7,14 +7,15 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 
 # Install dependencies
-RUN npm install
 RUN npm install -g @angular/cli
+RUN npm install
+
 
 # startp]ject
 COPY . .
 
 # Build the Angular app for production
-RUN npm run build --configuration=production --output-path=dist
+RUN npm run build --configuration=production 
 
 # Step 2: Use Nginx to serve the built Angular app
 FROM nginx:alpine
@@ -23,11 +24,11 @@ FROM nginx:alpine
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Copy built Angular app to Nginx's default static directory
-COPY --from=build /app/dist /usr/share/nginx/html
+COPY --from=build /app/dist/onthego/browser /usr/share/nginx/html
 
 # Expose port 80
-EXPOSE 4200
+EXPOSE 80
 
 # Start Nginx
-CMD ["ng", "serve"]
+CMD ["nginx", "-g" "deamon off;"]
 
