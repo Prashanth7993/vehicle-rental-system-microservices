@@ -2,41 +2,146 @@ images:
  - name: api-gateway
    image: prashanth7993/api-gateway:latest
    port: 8080
+   database: apigateway_db
+   env:
+     - name: SPRING_DATASOURCE_URL
+       value: jdbc:mysql://mysql:3306/apigateway_db
+     - name: SPRING_DATASOURCE_USERNAME
+       value: root
+     - name: SPRING_DATASOURCE_PASSWORD
+       value: root
+
  - name: authentication-service
    image: prashanth7993/authentication-service:latest
    port: 8080
+   database: authenticationsvc_db
+   env:
+     - name: SPRING_DATASOURCE_URL
+       value: jdbc:mysql://mysql:3306/authenticationsvc_db
+     - name: SPRING_DATASOURCE_USERNAME
+       value: root
+     - name: SPRING_DATASOURCE_PASSWORD
+       value: root
  - name: bookings-service
    image: prashanth7993/bookings-service:latest
    port: 8080
+   database: bookingservice_db
+   env:
+     - name: SPRING_DATASOURCE_URL
+       value: jdbc:mysql://mysql:3306/bookingservice__db
+     - name: SPRING_DATASOURCE_USERNAME
+       value: root
+     - name: SPRING_DATASOURCE_PASSWORD
+       value: root
  - name: config-server
    image: prashanth7993/config-server:latest
    port: 8080
+   database: configservice_db
+   env:
+     - name: SPRING_DATASOURCE_URL
+       value: jdbc:mysql://mysql:3306/configservice_db
+     - name: SPRING_DATASOURCE_USERNAME
+       value: root
+     - name: SPRING_DATASOURCE_PASSWORD
+       value: root
  - name: coupon-service
    image: prashanth7993/coupon-service:latest
    port: 8080
+   database: couponsvc_db
+   env:
+     - name: SPRING_DATASOURCE_URL
+       value: jdbc:mysql://mysql:3306/couponsvc_db
+     - name: SPRING_DATASOURCE_USERNAME
+       value: root
+     - name: SPRING_DATASOURCE_PASSWORD
+       value: root
  - name: customer-support
    image: prashanth7993/customer-support:latest
    port: 8080
+   database: customersupport_db
+   env:
+     - name: SPRING_DATASOURCE_URL
+       value: jdbc:mysql://mysql:3306:/customersupport_db
+     - name: SPRING_DATASOURCE_USERNAME
+       value: root
+     - name: SPRING_DATASOURCE_PASSWORD
+       value: root
  - name: mail-service
    image: prashanth7993/mail-service:latest
    port: 8080
+   database: mailsvc_db
+   env:
+     - name: SPRING_DATASOURCE_URL
+       value: jdbc:mysql://mysql:3306/mailsvc_db
+     - name: SPRING_DATASOURCE_USERNAME
+       value: root
+     - name: SPRING_DATASOURCE_PASSWORD
+       value: root
  - name: payment-service
    image: prashanth7993/payment-service:latest
    port: 8080
+   database: paymentsvc_db
+   env:
+     - name: SPRING_DATASOURCE_URL
+       value: jdbc:mysql://mysql:3306/paymentsvc_db
+     - name: SPRING_DATASOURCE_USERNAME
+       value: root
+     - name: SPRING_DATASOURCE_PASSWORD
+       value: root
  - name: review-service
    image: prashanth7993/review-service:latest
    port: 8080
+   database: reviewsvc_db
+   env:
+     - name: SPRING_DATASOURCE_URL
+       value: jdbc:mysql://mysql:3306/reviewsvc_db
+     - name: SPRING_DATASOURCE_USERNAME
+       value: root
+     - name: SPRING_DATASOURCE_PASSWORD
+       value: root
  - name: service-registry
    image: prashanth7993/service-registry:latest
    port: 8080
+   database: registrysvc_db
+   env:
+     - name: SPRING_DATASOURCE_URL
+       value: jdbc:mysql://mysql:3306/registrysvc_db
+     - name: SPRING_DATASOURCE_USERNAME
+       value: root
+     - name: SPRING_DATASOURCE_PASSWORD
+       value: root
  - name: user-service
    image: prashanth7993/user-service:latest
    port: 8080
+   database: usersvc_db
+   env:
+     - name: SPRING_DATASOURCE_URL
+       value: jdbc:mysql://mysql:3306/usersvc_db
+     - name: SPRING_DATASOURCE_USERNAME
+       value: root
+     - name: SPRING_DATASOURCE_PASSWORD
+       value: root
  - name: vehicles-service
    image: prashanth7993/vehicles-service:latest
    port: 8080
+   database: vehiclessvc_db
+   env:
+     - name: SPRING_DATASOURCE_URL
+       value: jdbc:mysql://mysql:3306/vehiclessvc_db
+     - name: SPRING_DATASOURCE_USERNAME
+       value: root
+     - name: SPRING_DATASOURCE_PASSWORD
+       value: root
  - name: vendor-service
    image: prashanth7993/vendor-service:latest
    port: 8080
+   database: vendorsvc_db
+   env:
+     - name: SPRING_DATASOURCE_URL
+       value: jdbc:mysql://mysql:3306/vendorsvc_db
+     - name: SPRING_DATASOURCE_USERNAME
+       value: root
+     - name: SPRING_DATASOURCE_PASSWORD
+       value: root
 
 serviceType: NodePort
