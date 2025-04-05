@@ -30,5 +30,6 @@ COPY --from=build /app/dist/onthego/browser /usr/share/nginx/html
 EXPOSE 80
 
 # Start Nginx
-CMD ["nginx", "-g", "daemon off;"]
+#CMD ["nginx", "-g", "daemon off;"]
+CMD ["ng","serve"]
 
