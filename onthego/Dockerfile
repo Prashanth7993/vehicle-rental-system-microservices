@@ -29,5 +29,5 @@ COPY --from=build /app/dist /usr/share/nginx/html
 EXPOSE 4200
 
 # Start Nginx
-CMD ["npm", "start"]
+CMD ["ng", "serve"]
 
