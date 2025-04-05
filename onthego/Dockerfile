@@ -1,35 +1,16 @@
 # Step 1: Build the Angular app
 FROM node:18-alpine AS build
-
 WORKDIR /app
-
-# Copy package.json and package-lock.json first (for caching)
 COPY package.json package-lock.json ./
-
-# Install dependencies
-RUN npm install -g @angular/cli
-RUN npm install
-
-
-# startp]ject
+RUN npm install && npm install -g @angular/cli
 COPY . .
+RUN npm run build 
 
-# Build the Angular app for production
-RUN npm run build --configuration=production 
 
-# Step 2: Use Nginx to serve the built Angular app
 FROM nginx:alpine
-
-# Copy custom Nginx config
 COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-# Copy built Angular app to Nginx's default static directory
 COPY --from=build /app/dist/onthego/browser /usr/share/nginx/html
-
-# Expose port 80
 EXPOSE 80
-
-# Start Nginx
-#CMD ["nginx", "-g", "daemon off;"]
-CMD ["ng","serve"]
+CMD ["nginx", "-g", "daemon off;"]
+#CMD ["ng","serve"]
 
