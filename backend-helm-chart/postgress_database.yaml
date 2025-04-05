@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: postgresdb
+  name: postgresdb
+  namespace: rental-ns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgresdb
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: postgresdb
+    spec:
+      containers:
+      - image: postgres:15
+        name: postgres
+        resources: {}
+        env:
+         - name: Postgress_user
+           value: root
+         - name: Postgress_Pass
+           value: rootpassword
+         - name: Postgree_Db
+           value: postgress
+status: {}
