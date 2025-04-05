@@ -8,8 +8,9 @@ COPY package.json package-lock.json ./
 
 # Install dependencies
 RUN npm install
+RUN npm install  -g @angulanpm
 
-# Copy the entire project
+# startp]ject
 COPY . .
 
 # Build the Angular app for production
@@ -25,8 +26,8 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /app/dist /usr/share/nginx/html
 
 # Expose port 80
-EXPOSE 80
+EXPOSE 4200
 
 # Start Nginx
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["npm", "start"]
 
