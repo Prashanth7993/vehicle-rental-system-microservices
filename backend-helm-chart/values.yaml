@@ -1,5 +1,5 @@
 images:
-| - name: api-gateway
+ - name: api-gateway
    image: prashanth7993/api-gateway:latest
    namespace: rental-svc
    port: 9000
@@ -10,7 +10,7 @@ images:
      - name: SPRING_DATASOURCE_USERNAME
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
-       value: root
+       value: rootpassword
 
  - name: authentication-service
    image: prashanth7993/authentication-service:latest
@@ -23,7 +23,7 @@ images:
      - name: SPRING_DATASOURCE_USERNAME
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
-       value: root
+       value: rootpassword
  - name: bookings-service
    image: prashanth7993/bookings-service:latest
    port: 9595
@@ -35,7 +35,7 @@ images:
      - name: SPRING_DATASOURCE_USERNAME
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
-       value: root
+       value: rootpassword
  - name: config-server
    image: prashanth7993/config-server:latest
    port: 8088
@@ -47,7 +47,7 @@ images:
      - name: SPRING_DATASOURCE_USERNAME
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
-       value: root
+       value: rootpassword
  - name: coupon-service
    image: prashanth7993/coupon-service:latest
    port: 9097
@@ -59,7 +59,7 @@ images:
      - name: SPRING_DATASOURCE_USERNAME
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
-       value: root
+       value: rootpassword
  - name: customer-support
    image: prashanth7993/customer-support:latest
    port: 8090
@@ -71,7 +71,7 @@ images:
      - name: SPRING_DATASOURCE_USERNAME
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
-       value: root
+       value: rootpassword
  - name: mail-service
    image: prashanth7993/mail-service:latest
    port: 9098
@@ -83,7 +83,7 @@ images:
      - name: SPRING_DATASOURCE_USERNAME
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
-       value: root
+       value: rootpassword
  - name: payment-service
    image: prashanth7993/payment-service:latest
    port: 9696
@@ -95,7 +95,7 @@ images:
      - name: SPRING_DATASOURCE_USERNAME
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
-       value: root
+       value: rootpassword
  - name: review-service
    image: prashanth7993/review-service:latest
    port: 9096
@@ -107,7 +107,7 @@ images:
      - name: SPRING_DATASOURCE_USERNAME
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
-       value: root
+       value: rootpassword
  - name: service-registry
    image: prashanth7993/service-registry:latest
    port: 8761
@@ -119,7 +119,7 @@ images:
      - name: SPRING_DATASOURCE_USERNAME
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
-       value: root
+       value: rootpassword
  - name: user-service
    image: prashanth7993/user-service:latest
    port: 9848
@@ -131,7 +131,7 @@ images:
      - name: SPRING_DATASOURCE_USERNAME
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
-       value: root
+       value: rootpassword
  - name: vehicles-service
    image: prashanth7993/vehicles-service:latest
    port: 8092
@@ -143,7 +143,7 @@ images:
      - name: SPRING_DATASOURCE_USERNAME
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
-       value: root
+       value: rootpassword
  - name: vendor-service
    image: prashanth7993/vendor-service:latest
    port: 8091
@@ -155,6 +155,6 @@ images:
      - name: SPRING_DATASOURCE_USERNAME
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
-       value: root
+       value: rootpassword
 
 serviceType: NodePort
