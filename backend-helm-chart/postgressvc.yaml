@@ -4,7 +4,7 @@ metadata:
   creationTimestamp: "2025-04-06T10:03:42Z"
   labels:
     app: postgres-db
-  name: postgresdb
+  name: postgres-db
   namespace: rental-svc
   resourceVersion: "9383"
   uid: be40b3d2-7bc3-46f5-bd69-0d1f837a9bc1

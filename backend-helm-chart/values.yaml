@@ -1,12 +1,12 @@
 images:
- - name: api-gateway
+| - name: api-gateway
    image: prashanth7993/api-gateway:latest
    namespace: rental-svc
    port: 9000
    database: apigateway_db
    env:
      - name: SPRING_DATASOURCE_URL
-       value: jdbc:postgressql://postgres-db:5432/apigateway_db
+       value: jdbc:postgresql://postgres-db:5432/apigateway_db
      - name: SPRING_DATASOURCE_USERNAME
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
@@ -19,7 +19,7 @@ images:
    database: authenticationsvc_db
    env:
      - name: SPRING_DATASOURCE_URL
-       value: jdbc:postgressql://postgres-db:5432/authenticationsvc_db
+       value: jdbc:postgresql://postgres-db:5432/authenticationsvc_db
      - name: SPRING_DATASOURCE_USERNAME
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
@@ -31,7 +31,7 @@ images:
    database: bookingservice_db
    env:
      - name: SPRING_DATASOURCE_URL
-       value: jdbc:postgressql://postgres-db:5432/bookingservice__db
+       value: jdbc:postgresql://postgres-db:5432/bookingservice__db
      - name: SPRING_DATASOURCE_USERNAME
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
@@ -43,7 +43,7 @@ images:
    database: configservice_db
    env:
      - name: SPRING_DATASOURCE_URL
-       value: jdbc:postgressql://postgres-db:5432/configservice_db
+       value: jdbc:postgresql://postgres-db:5432/configservice_db
      - name: SPRING_DATASOURCE_USERNAME
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
@@ -55,7 +55,7 @@ images:
    database: couponsvc_db
    env:
      - name: SPRING_DATASOURCE_URL
-       value: jdbc:postgressql://postgres-db:5432/couponsvc_db
+       value: jdbc:postgresql://postgres-db:5432/couponsvc_db
      - name: SPRING_DATASOURCE_USERNAME
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
@@ -67,7 +67,7 @@ images:
    database: customersupport_db
    env:
      - name: SPRING_DATASOURCE_URL
-       value: jdbc:postgressql://postgres-db:5432/customersupport_db
+       value: jdbc:postgresql://postgres-db:5432/customersupport_db
      - name: SPRING_DATASOURCE_USERNAME
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
@@ -79,7 +79,7 @@ images:
    database: mailsvc_db
    env:
      - name: SPRING_DATASOURCE_URL
-       value: jdbc:postgressql://postgres-db:5432/mailsvc_db
+       value: jdbc:postgresql://postgres-db:5432/mailsvc_db
      - name: SPRING_DATASOURCE_USERNAME
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
@@ -91,7 +91,7 @@ images:
    database: paymentsvc_db
    env:
      - name: SPRING_DATASOURCE_URL
-       value: jdbc:postgressql://postgres-db:5432/paymentsvc_db
+       value: jdbc:postgresql://postgres-db:5432/paymentsvc_db
      - name: SPRING_DATASOURCE_USERNAME
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
@@ -103,7 +103,7 @@ images:
    database: reviewsvc_db
    env:
      - name: SPRING_DATASOURCE_URL
-       value: jdbc:postgressql://postgres-db:5432/reviewsvc_db
+       value: jdbc:postgresql://postgres-db:5432/reviewsvc_db
      - name: SPRING_DATASOURCE_USERNAME
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
@@ -115,7 +115,7 @@ images:
    database: registrysvc_db
    env:
      - name: SPRING_DATASOURCE_URL
-       value: jdbc:postgressql://postgres-db:5432/registrysvc_db
+       value: jdbc:postgresql://postgres-db:5432/registrysvc_db
      - name: SPRING_DATASOURCE_USERNAME
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
@@ -127,7 +127,7 @@ images:
    database: usersvc_db
    env:
      - name: SPRING_DATASOURCE_URL
-       value: jdbc:postgressql://postgres-db:5432/usersvc_db
+       value: jdbc:postgresql://postgres-db:5432/usersvc_db
      - name: SPRING_DATASOURCE_USERNAME
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
@@ -139,7 +139,7 @@ images:
    database: vehiclessvc_db
    env:
      - name: SPRING_DATASOURCE_URL
-       value: jdbc:postgressql://postgres-db:5432/vehiclessvc_db
+       value: jdbc:postgresql://postgres-db:5432/vehiclessvc_db
      - name: SPRING_DATASOURCE_USERNAME
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
@@ -151,7 +151,7 @@ images:
    database: vendorsvc_db
    env:
      - name: SPRING_DATASOURCE_URL
-       value: jdbc:postgressql://postgres-db:5432/vendorsvc_db
+       value: jdbc:postgresql://postgres-db:5432/vendorsvc_db
      - name: SPRING_DATASOURCE_USERNAME
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
