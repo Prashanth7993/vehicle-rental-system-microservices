@@ -3,7 +3,7 @@ kind: Service
 metadata:
   creationTimestamp: "2025-04-06T10:03:42Z"
   labels:
-    app: postgresdb
+    app: postgres-db
   name: postgresdb
   namespace: rental-svc
   resourceVersion: "9383"
@@ -23,7 +23,7 @@ spec:
     protocol: TCP
     targetPort: 5432
   selector:
-    app: postgresdb
+    app: postgres-db
   sessionAffinity: None
   type: NodePort
 status:

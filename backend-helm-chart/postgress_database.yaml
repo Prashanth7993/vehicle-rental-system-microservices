@@ -3,24 +3,24 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: postgresdb
+    app: postgres-db
   name: postgresdb
   namespace: rental-svc
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: postgresdb
+      app: postgres-db
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: postgresdb
+        app: postgres-db
     spec:
       containers:
       - image: postgres:15
-        name: postgres
+        name: postgres-db
         resources: {}
         ports:
            - containerPort: 5432
@@ -31,4 +31,5 @@ spec:
            value: rootpassword
          - name: POSTGRES_DB
            value: postgress
+
 status: {}
