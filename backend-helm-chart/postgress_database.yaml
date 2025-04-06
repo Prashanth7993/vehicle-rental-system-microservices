@@ -5,7 +5,7 @@ metadata:
   labels:
     app: postgresdb
   name: postgresdb
-  namespace: rental-ns
+  namespace: rental-svc
 spec:
   replicas: 1
   selector:
@@ -22,11 +22,13 @@ spec:
       - image: postgres:15
         name: postgres
         resources: {}
+        ports:
+           - containerPort: 5432
         env:
-         - name: Postgress_user
+         - name: POSTGRES_USER
            value: root
-         - name: Postgress_Pass
+         - name: POSTGRES_PASSWORD
            value: rootpassword
-         - name: Postgree_Db
+         - name: POSTGRES_DB
            value: postgress
 status: {}
