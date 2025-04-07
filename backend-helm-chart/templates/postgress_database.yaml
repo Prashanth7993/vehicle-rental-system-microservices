@@ -1,40 +1,36 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
-  labels:
-    app: postgres-db
   name: postgres-db
   namespace: rental-svc
+  labels:
+    app: postgres-db
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: postgres-db
-  strategy: {}
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: postgres-db
     spec:
       containers:
-      - image: postgres:15
-        name: postgres-db
-        resources: {}
-        ports:
-           - containerPort: 5432
-        env:
-         - name: POSTGRES_USER
-           value: root
-         - name: POSTGRES_PASSWORD
-           value: rootpassword
-         - name: POSTGRES_DB
-           value: postgres
-        volumeMounts:
-            - name: create-databases
-              mountPath: /docker-entrypoint-create-databases.d
+        - name: postgres-db
+          image: postgres:15
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_USER
+              value: root
+            - name: POSTGRES_PASSWORD
+              value: rootpassword
+            - name: POSTGRES_DB
+              value: postgress
+          volumeMounts:
+            - name: init-db
+              mountPath: /docker-entrypoint-initdb.d
       volumes:
-         - name: create-databases
-           configMap:
-             name: postgres-init-script
+        - name: init-db
+          configMap:
+            name: postgres-init-script
