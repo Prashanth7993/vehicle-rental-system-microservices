@@ -16,10 +16,10 @@ images:
    image: prashanth7993/authentication-service:latest
    port: 9099
    namespace: rental-svc
-   database: authenticationsvc_db
+   database: authentication-service
    env:
      - name: SPRING_DATASOURCE_URL
-       value: jdbc:postgresql://postgres-db:5432/authenticationsvc_db
+       value: jdbc:postgresql://postgres-db:5432/authentication-service
      - name: SPRING_DATASOURCE_USERNAME
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
@@ -28,10 +28,10 @@ images:
    image: prashanth7993/bookings-service:latest
    port: 9595
    namespace: rental-svc
-   database: bookingservice_db
+   database: bookings-service
    env:
      - name: SPRING_DATASOURCE_URL
-       value: jdbc:postgresql://postgres-db:5432/bookingservice__db
+       value: jdbc:postgresql://postgres-db:5432/bookings-service
      - name: SPRING_DATASOURCE_USERNAME
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
@@ -52,10 +52,10 @@ images:
    image: prashanth7993/coupon-service:latest
    port: 9097
    namespace: rental-svc
-   database: couponsvc_db
+   database: coupon-service
    env:
      - name: SPRING_DATASOURCE_URL
-       value: jdbc:postgresql://postgres-db:5432/couponsvc_db
+       value: jdbc:postgresql://postgres-db:5432/coupon-service
      - name: SPRING_DATASOURCE_USERNAME
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
@@ -64,10 +64,10 @@ images:
    image: prashanth7993/customer-support:latest
    port: 8090
    namespace: rental-svc
-   database: customersupport_db
+   database: customer-support
    env:
      - name: SPRING_DATASOURCE_URL
-       value: jdbc:postgresql://postgres-db:5432/customersupport_db
+       value: jdbc:postgresql://postgres-db:5432/customer-support
      - name: SPRING_DATASOURCE_USERNAME
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
@@ -88,10 +88,10 @@ images:
    image: prashanth7993/payment-service:latest
    port: 9696
    namespace: rental-svc
-   database: paymentsvc_db
+   database: payment-service
    env:
      - name: SPRING_DATASOURCE_URL
-       value: jdbc:postgresql://postgres-db:5432/paymentsvc_db
+       value: jdbc:postgresql://postgres-db:5432/payment-service
      - name: SPRING_DATASOURCE_USERNAME
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
@@ -100,10 +100,10 @@ images:
    image: prashanth7993/review-service:latest
    port: 9096
    namespace: rental-svc
-   database: reviewsvc_db
+   database: review-service
    env:
      - name: SPRING_DATASOURCE_URL
-       value: jdbc:postgresql://postgres-db:5432/reviewsvc_db
+       value: jdbc:postgresql://postgres-db:5432/review-service
      - name: SPRING_DATASOURCE_USERNAME
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
@@ -124,10 +124,10 @@ images:
    image: prashanth7993/user-service:latest
    port: 9848
    namespace: rental-svc
-   database: usersvc_db
+   database: user-service
    env:
      - name: SPRING_DATASOURCE_URL
-       value: jdbc:postgresql://postgres-db:5432/usersvc_db
+       value: jdbc:postgresql://postgres-db:5432/user-service
      - name: SPRING_DATASOURCE_USERNAME
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
@@ -136,10 +136,10 @@ images:
    image: prashanth7993/vehicles-service:latest
    port: 8092
    namespace: rental-svc
-   database: vehiclessvc_db
+   database: vehicles-service
    env:
      - name: SPRING_DATASOURCE_URL
-       value: jdbc:postgresql://postgres-db:5432/vehiclessvc_db
+       value: jdbc:postgresql://postgres-db:5432/vehicles-service
      - name: SPRING_DATASOURCE_USERNAME
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
@@ -148,10 +148,10 @@ images:
    image: prashanth7993/vendor-service:latest
    port: 8091
    namespace: rental-svc
-   database: vendorsvc_db
+   database: vendor-service
    env:
      - name: SPRING_DATASOURCE_URL
-       value: jdbc:postgresql://postgres-db:5432/vendorsvc_db
+       value: jdbc:postgresql://postgres-db:5432/vendor-service
      - name: SPRING_DATASOURCE_USERNAME
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
