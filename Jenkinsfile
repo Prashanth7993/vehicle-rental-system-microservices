@@ -18,13 +18,7 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/Prashanth7993/vehicle-rental-system-microservices.git'
             }
         }
-	stage('Deploying backend kubernetes with Helm') {
-            steps {
-                sh """
-                    helm upgrade --install microservice .
-                """
-            }
-        }
+	
 	stage('Build & Push Docker Images Frontend'){
             steps{
 
@@ -57,13 +51,13 @@ pipeline {
             }
         }
 
-        // stage('Deploying backend kubernetes with Helm') {
-        //     steps {
-        //         sh """
-        //             helm upgrade --install microservice .
-        //         """
-        //     }
-        // }
+        stage('Deploying backend kubernetes with Helm') {
+            steps {
+                sh """
+                    helm upgrade --install microservice .
+                """
+            }
+        }
     }
 
     post {
