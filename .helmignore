@@ -1,0 +1,8 @@
+# .helmignore
+*.tgz
+*.tar.gz
+*.log
+*.pack
+node_modules
+.git
+*.md
