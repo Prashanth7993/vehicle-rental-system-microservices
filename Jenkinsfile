@@ -1,5 +1,5 @@
 pipeline {
-    agent {label 'jenkins-slave1'}
+    agent any
 
     triggers {
         githubPush()
