@@ -13,7 +13,7 @@ app.get("/node",(req,res)=>{
 })
 
 app.listen(3000,()=>{
-    console.log("Server is running at http://localhost:3000");
+    console.log("Server is running at http://135.235.216.179:3000");
 })
 
 
