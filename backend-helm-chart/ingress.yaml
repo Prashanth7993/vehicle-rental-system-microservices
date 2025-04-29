@@ -1,0 +1,384 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: test
+  namespace: rental-svc
+  annotations:
+    kubernetes.io/ingress.class: nginx  
+spec:
+  rules:
+  - http:
+      paths:
+      - backend:
+          service:
+            name: authentication-service 
+            port:
+              number: 9099
+        path: /auth/greet
+        pathType: Prefix
+      - backend:
+          service:
+            name: authentication-service 
+            port:
+              number: 9099
+        path: /auth/login
+        pathType: Prefix
+      - backend:
+          service:
+            name: authentication-service 
+            port:
+              number: 9099
+        path: /auth/user/register
+        pathType: Prefix
+      - backend:
+          service:
+            name: authentication-service 
+            port:
+              number: 9099
+        path: /auth/user/toker/(.*)
+        pathType: Prefix
+      - backend:
+          service:
+            name: authentication-service 
+            port:
+              number: 9099
+        path: /auth/forgot-password
+        pathType: Prefix
+      - backend:
+          service:
+            name: authentication-service 
+            port:
+              number: 9099
+        path: /auth/verify/forget-password
+        pathType: Prefix
+      - backend:
+          service:
+            name: authentication-service 
+            port:
+              number: 9099
+        path: /auth/reset/password
+        pathType: Prefix
+      - backend:
+          service:
+            name: authentication-service 
+            port:
+              number: 9099
+        path: /auth/validate/token
+        pathType: Prefix
+
+      - backend:
+          service:
+            name: bookings-service
+            port:
+              number: 9595
+        path: /bookings/greet
+        pathType: Prefix
+      - backend:
+          service:
+            name: bookings-service
+            port:
+              number: 9595
+        path: /bookings/users/(.*)
+        pathType: Prefix
+      - backend:
+          service:
+            name: bookings-service
+            port:
+              number: 9595
+        path: /bookings/vehicle/(.*)
+        pathType: Prefix
+      - backend:
+          service:
+            name: bookings-service
+            port:
+              number: 9595
+        path: /bookings/(.*)
+        pathType: Prefix
+      - backend:
+          service:
+            name: bookings-service
+            port:
+              number: 9595
+        path: /bookings/status/(.*)
+        pathType: Prefix
+
+      - backend:
+          service:
+            name: coupon-service
+            port:
+              number: 9097
+        path: /coupon/greet
+        pathType: Prefix
+      - backend:
+          service:
+            name: coupon-service
+            port:
+              number: 9097
+        path: /coupon/(.*)
+        pathType: Prefix
+      - backend:
+          service:
+            name: coupon-service
+            port:
+              number: 9097
+        path: /coupon/code(.*)
+        pathType: Prefix
+      - backend:
+          service:
+            name: coupon-service
+            port:
+              number: 9097
+        path: /coupon/block(.*)
+        pathType: Prefix
+
+      - backend:
+          service:
+            name: customer-support
+            port:
+              number: 8090
+        path: /support/greet
+        pathType: Prefix
+      - backend:
+          service:
+            name: customer-support
+            port:
+              number: 8090
+        path: /support/enquiries
+        pathType: Prefix
+      - backend:
+          service:
+            name: customer-support
+            port:
+              number: 8090
+        path: /support/enquiries/(.*)
+        pathType: Prefix
+      - backend:
+          service:
+            name: customer-support
+            port:
+              number: 8090
+        path: /support/enquiry
+        pathType: Prefix
+      - backend:
+          service:
+            name: customer-support
+            port:
+              number: 8090
+        path: /support/enquiry/slove/(.*)
+        pathType: Prefix
+      - backend:
+          service:
+            name: customer-support
+            port:
+              number: 8090
+        path: /support/enquiries/customer-name/(.*)
+        pathType: Prefix
+      - backend:
+          service:
+            name: customer-support
+            port:
+              number: 8090
+        path: /support/enquiries/subject/(.*)
+        pathType: Prefix
+      - backend:
+          service:
+            name: customer-support
+            port:
+              number: 8090
+        path: /support/enquiry/(.*)
+        pathType: Prefix
+
+      - backend:
+          service:
+            name: mail-service
+            port:
+              number: 9098
+        path: /mail/send-mail
+        pathType: Prefix
+
+      - backend:
+          service:
+            name: payment-service
+            port:
+              number: 9696
+        path: /payment/greet
+        pathType: Prefix
+      - backend:
+          service:
+            name: payment-service
+            port:
+              number: 9696
+        path: /payment/create-order
+        pathType: Prefix
+      - backend:
+          service:
+            name: payment-service
+            port:
+              number: 9696
+        path: /payment/transaction
+        pathType: Prefix
+      - backend:
+          service:
+            name: payment-service
+            port:
+              number: 9696
+        path: /payment/transaction/(.*)
+        pathType: Prefix
+      - backend:
+          service:
+            name: payment-service
+            port:
+              number: 9696
+        path: /payment/verify-status
+        pathType: Prefix
+      - backend:
+          service:
+            name: payment-service
+            port:
+              number: 9696
+        path: /payment/delete-transaction/(.*)
+        pathType: Prefix
+
+      - backend:
+          service:
+            name: review-service
+            port:
+              number: 9096
+        path: /review/greet
+        pathType: Prefix
+      - backend:
+          service:
+            name: review-service
+            port:
+              number: 9096
+        path: /review/(.*)
+        pathType: Prefix
+      - backend:
+          service:
+            name: review-service
+            port:
+              number: 9096
+        path: /review/vechicle/(.*)
+        pathType: Prefix
+      - backend:
+          service:
+            name: review-service
+            port:
+              number: 9096
+        path: /review/user/(.*)
+        pathType: Prefix
+
+      - backend:
+          service:
+            name: user-service
+            port:
+              number: 9848
+        path: /users/greet
+        pathType: Prefix
+      - backend:
+          service:
+            name: user-service
+            port:
+              number: 9848
+        path: /users/(.*)
+        pathType: Prefix
+      - backend:
+          service:
+            name: user-service
+            port:
+              number: 9848
+        path: /users/email/(.*)
+        pathType: Prefix
+
+      - backend:
+          service:
+            name: vehicles-service
+            port:
+              number: 8092
+        path: /vechile/greet
+        pathType: Prefix
+      - backend:
+          service:
+            name: vehicles-service
+            port:
+              number: 8092
+        path: /vechile/(.*)
+        pathType: Prefix
+      - backend:
+          service:
+            name: vehicles-service
+            port:
+              number: 8092
+        path: /vechile/location/(.*)
+        pathType: Prefix
+      - backend:
+          service:
+            name: vehicles-service
+            port:
+              number: 8092
+        path: /vechile/pincode/(.*)
+        pathType: Prefix
+      - backend:
+          service:
+            name: vehicles-service
+            port:
+              number: 8092
+        path: /vechile/search/vehicle/(.*)
+        pathType: Prefix
+      - backend:
+          service:
+            name: vehicles-service
+            port:
+              number: 8092
+        path: /vechile/vendor/(.*)
+        pathType: Prefix
+      - backend:
+          service:
+            name: vehicles-service
+            port:
+              number: 8092
+        path: /vechile/name/(.*)
+        pathType: Prefix
+      - backend:
+          service:
+            name: vehicles-service
+            port:
+              number: 8092
+        path: /vechile/add-vehcile
+        pathType: Prefix
+
+      - backend:
+          service:
+            name: vendor-service
+            port:
+              number: 8091
+        path: /vendor/greet
+        pathType: Prefix
+      - backend:
+          service:
+            name: vendor-service
+            port:
+              number: 8091
+        path: /vendor/(.*)
+        pathType: Prefix
+      - backend:
+          service:
+            name: vendor-service
+            port:
+              number: 8091
+        path: /vendor/email/(.*)
+        pathType: Prefix
+      - backend:
+          service:
+            name: vendor-service
+            port:
+              number: 8091
+        path: /vendor/name/(.*)
+        pathType: Prefix
+      - backend:
+          service:
+            name: vendor-service
+            port:
+              number: 8091
+        path: /vendor/id-name/vendors
+        pathType: Prefix
