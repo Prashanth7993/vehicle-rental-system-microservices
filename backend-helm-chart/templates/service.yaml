@@ -12,8 +12,5 @@ spec:
   - protocol: TCP
     port: {{ .port }}
     targetPort: {{ .port }}
-    {{- if eq $.Values.serviceType "NodePort" }}
-    nodePort: {{ add 30000 (randInt 0  2767) }}
-    {{- end }}
 ---
 {{- end }}

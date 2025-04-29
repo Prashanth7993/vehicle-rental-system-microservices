@@ -1,6 +1,7 @@
+appVersion: "latest-v2"
 images:
  - name: api-gateway
-   image: prashanth7993/api-gateway:latest
+   image: prashanth7993/api-gateway
    namespace: rental-svc
    port: 9000
    database: apigateway_db
@@ -11,9 +12,11 @@ images:
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
        value: rootpassword
+     - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+       value: http://service-registry:8761/eureka
 
  - name: authentication-service
-   image: prashanth7993/authentication-service:latest
+   image: prashanth7993/authentication-service
    port: 9099
    namespace: rental-svc
    database: authentication-service
@@ -24,8 +27,11 @@ images:
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
        value: rootpassword
+     - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+       value: http://service-registry:8761/eureka
+
  - name: bookings-service
-   image: prashanth7993/bookings-service:latest
+   image: prashanth7993/bookings-service
    port: 9595
    namespace: rental-svc
    database: bookings-service
@@ -36,8 +42,11 @@ images:
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
        value: rootpassword
+     - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+       value: http://service-registry:8761/eureka
+
  - name: config-server
-   image: prashanth7993/config-server:latest
+   image: prashanth7993/config-server
    port: 8088
    namespace: rental-svc
    database: configservice_db
@@ -48,8 +57,11 @@ images:
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
        value: rootpassword
+     - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+       value: http://service-registry:8761/eureka
+
  - name: coupon-service
-   image: prashanth7993/coupon-service:latest
+   image: prashanth7993/coupon-service
    port: 9097
    namespace: rental-svc
    database: coupon-service
@@ -60,8 +72,11 @@ images:
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
        value: rootpassword
+     - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+       value: http://service-registry:8761/eureka
+
  - name: customer-support
-   image: prashanth7993/customer-support:latest
+   image: prashanth7993/customer-support
    port: 8090
    namespace: rental-svc
    database: customer-support
@@ -72,8 +87,11 @@ images:
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
        value: rootpassword
+     - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+       value: http://service-registry:8761/eureka
+
  - name: mail-service
-   image: prashanth7993/mail-service:latest
+   image: prashanth7993/mail-service
    port: 9098
    namespace: rental-svc
    database: mailsvc_db
@@ -84,8 +102,11 @@ images:
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
        value: rootpassword
+     - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+       value: http://service-registry:8761/eureka
+
  - name: payment-service
-   image: prashanth7993/payment-service:latest
+   image: prashanth7993/payment-service
    port: 9696
    namespace: rental-svc
    database: payment-service
@@ -96,8 +117,11 @@ images:
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
        value: rootpassword
+     - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+       value: http://service-registry:8761/eureka
+
  - name: review-service
-   image: prashanth7993/review-service:latest
+   image: prashanth7993/review-service
    port: 9096
    namespace: rental-svc
    database: review-service
@@ -108,8 +132,11 @@ images:
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
        value: rootpassword
+     - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+       value: http://service-registry:8761/eureka
+
  - name: service-registry
-   image: prashanth7993/service-registry:latest
+   image: prashanth7993/service-registry
    port: 8761
    namespace: rental-svc
    database: registrysvc_db
@@ -120,8 +147,9 @@ images:
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
        value: rootpassword
+
  - name: user-service
-   image: prashanth7993/user-service:latest
+   image: prashanth7993/user-service
    port: 9848
    namespace: rental-svc
    database: user-service
@@ -132,8 +160,11 @@ images:
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
        value: rootpassword
+     - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+       value: http://service-registry:8761/eureka
+
  - name: vehicles-service
-   image: prashanth7993/vehicles-service:latest
+   image: prashanth7993/vehicles-service
    port: 8092
    namespace: rental-svc
    database: vehicles-service
@@ -144,8 +175,11 @@ images:
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
        value: rootpassword
+     - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+       value: http://service-registry:8761/eureka
+
  - name: vendor-service
-   image: prashanth7993/vendor-service:latest
+   image: prashanth7993/vendor-service
    port: 8091
    namespace: rental-svc
    database: vendor-service
@@ -156,5 +190,244 @@ images:
        value: root
      - name: SPRING_DATASOURCE_PASSWORD
        value: rootpassword
+     - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+       value: http://service-registry:8761/eureka
 
-serviceType: NodePort
+serviceType: ClusterIP
+
+#ingress-controller
+ingress:
+  enabled: true
+  className: nginx
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+  hosts:
+    - host: rental.local
+      paths:
+        # ------------ Authentication Service (/auth) ------------
+        - path: /auth/greet
+          pathType: Prefix
+          serviceName: authentication-service
+          servicePort: 9099
+        - path: /auth/login
+          pathType: Prefix
+          serviceName: authentication-service
+          servicePort: 9099
+        - path: /auth/user/register
+          pathType: Prefix
+          serviceName: authentication-service
+          servicePort: 9099
+        - path: /auth/user/toker/(.*)
+          pathType: Prefix
+          serviceName: authentication-service
+          servicePort: 9099
+        - path: /auth/forgot-password
+          pathType: Prefix
+          serviceName: authentication-service
+          servicePort: 9099
+        - path: /auth/verify/forget-password
+          pathType: Prefix
+          serviceName: authentication-service
+          servicePort: 9099
+        - path: /auth/reset/password
+          pathType: Prefix
+          serviceName: authentication-service
+          servicePort: 9099
+        - path: /auth/validate/token
+          pathType: Prefix
+          serviceName: authentication-service
+          servicePort: 9099
+
+        # ------------ Booking Service (/bookings) ------------
+        - path: /bookings/greet
+          pathType: Prefix
+          serviceName: bookings-service
+          servicePort: 9595
+        - path: /bookings/users/(.*)
+          pathType: Prefix
+          serviceName: bookings-service
+          servicePort: 9595
+        - path: /bookings/vehicle/(.*)
+          pathType: Prefix
+          serviceName: bookings-service
+          servicePort: 9595
+        - path: /bookings/(.*)
+          pathType: Prefix
+          serviceName: bookings-service
+          servicePort: 9595
+        - path: /bookings/status/(.*)
+          pathType: Prefix
+          serviceName: bookings-service
+          servicePort: 9595
+
+        # ------------ Coupon Service (/coupon) ------------
+        - path: /coupon/greet
+          pathType: Prefix
+          serviceName: coupon-service
+          servicePort: 9097
+        - path: /coupon/(.*)
+          pathType: Prefix
+          serviceName: coupon-service
+          servicePort: 9097
+        - path: /coupon/code(.*)
+          pathType: Prefix
+          serviceName: coupon-service
+          servicePort: 9097
+        - path: /coupon/block(.*)
+          pathType: Prefix
+          serviceName: coupon-service
+          servicePort: 9097
+
+        # ------------ Customer Support Service (/support) ------------
+        - path: /support/greet
+          pathType: Prefix
+          serviceName: customer-support
+          servicePort: 8090
+        - path: /support/enquiries
+          pathType: Prefix
+          serviceName: customer-support
+          servicePort: 8090
+        - path: /support/enquiries/(.*)
+          pathType: Prefix
+          serviceName: customer-support
+          servicePort: 8090
+        - path: /support/enquiry
+          pathType: Prefix
+          serviceName: customer-support
+          servicePort: 8090
+        - path: /support/enquiry/slove/(.*)
+          pathType: Prefix
+          serviceName: customer-support
+          servicePort: 8090
+        - path: /support/enquiries/customer-name/(.*)
+          pathType: Prefix
+          serviceName: customer-support
+          servicePort: 8090
+        - path: /support/enquiries/subject/(.*)
+          pathType: Prefix
+          serviceName: customer-support
+          servicePort: 8090
+        - path: /support/enquiry/(.*)
+          pathType: Prefix
+          serviceName: customer-support
+          servicePort: 8090
+
+        # ------------ Mail Service (/mail) ------------
+        - path: /mail/send-mail
+          pathType: Prefix
+          serviceName: mail-service
+          servicePort: 9098
+
+        # ------------ Payment Service (/payment) ------------
+        - path: /payment/greet
+          pathType: Prefix
+          serviceName: payment-service
+          servicePort: 9696
+        - path: /payment/create-order
+          pathType: Prefix
+          serviceName: payment-service
+          servicePort: 9696
+        - path: /payment/transaction
+          pathType: Prefix
+          serviceName: payment-service
+          servicePort: 9696
+        - path: /payment/transaction/(.*)
+          pathType: Prefix
+          serviceName: payment-service
+          servicePort: 9696
+        - path: /payment/verify-status
+          pathType: Prefix
+          serviceName: payment-service
+          servicePort: 9696
+        - path: /payment/delete-transaction/(.*)
+          pathType: Prefix
+          serviceName: payment-service
+          servicePort: 9696
+
+        # ------------ Review Service (/review) ------------
+        - path: /review/greet
+          pathType: Prefix
+          serviceName: review-service
+          servicePort: 9096
+        - path: /review/(.*)
+          pathType: Prefix
+          serviceName: review-service
+          servicePort: 9096
+        - path: /review/vechicle/(.*)
+          pathType: Prefix
+          serviceName: review-service
+          servicePort: 9096
+        - path: /review/user/(.*)
+          pathType: Prefix
+          serviceName: review-service
+          servicePort: 9096
+
+        # ------------ User Service (/users) ------------
+        - path: /users/greet
+          pathType: Prefix
+          serviceName: user-service
+          servicePort: 9848
+        - path: /users/(.*)
+          pathType: Prefix
+          serviceName: user-service
+          servicePort: 9848
+        - path: /users/email/(.*)
+          pathType: Prefix
+          serviceName: user-service
+          servicePort: 9848
+
+        # ------------ Vehicle Service (/vechile) ------------
+        - path: /vechile/greet
+          pathType: Prefix
+          serviceName: vehicles-service
+          servicePort: 8092
+        - path: /vechile/(.*)
+          pathType: Prefix
+          serviceName: vehicles-service
+          servicePort: 8092
+        - path: /vechile/location/(.*)
+          pathType: Prefix
+          serviceName: vehicles-service
+          servicePort: 8092
+        - path: /vechile/pincode/(.*)
+          pathType: Prefix
+          serviceName: vehicles-service
+          servicePort: 8092
+        - path: /vechile/search/vehicle/(.*)
+          pathType: Prefix
+          serviceName: vehicles-service
+          servicePort: 8092
+        - path: /vechile/vendor/(.*)
+          pathType: Prefix
+          serviceName: vehicles-service
+          servicePort: 8092
+        - path: /vechile/name/(.*)
+          pathType: Prefix
+          serviceName: vehicles-service
+          servicePort: 8092
+        - path: /vechile/add-vehcile
+          pathType: Prefix
+          serviceName: vehicles-service
+          servicePort: 8092
+
+        # ------------ Vendor Service (/vendor) ------------
+        - path: /vendor/greet
+          pathType: Prefix
+          serviceName: vendor-service
+          servicePort: 8091
+        - path: /vendor/(.*)
+          pathType: Prefix
+          serviceName: vendor-service
+          servicePort: 8091
+        - path: /vendor/email/(.*)
+          pathType: Prefix
+          serviceName: vendor-service
+          servicePort: 8091
+        - path: /vendor/name/(.*)
+          pathType: Prefix
+          serviceName: vendor-service
+          servicePort: 8091
+        - path: /vendor/id-name/vendors
+          pathType: Prefix
+          serviceName: vendor-service
+          servicePort: 8091

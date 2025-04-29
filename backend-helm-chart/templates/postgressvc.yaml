@@ -1,30 +1,16 @@
 apiVersion: v1
 kind: Service
 metadata:
-  creationTimestamp: "2025-04-06T10:03:42Z"
-  labels:
-    app: postgres-db
   name: postgres-db
   namespace: rental-svc
-  resourceVersion: "9383"
-  uid: be40b3d2-7bc3-46f5-bd69-0d1f837a9bc1
+  labels:
+    app: postgres-db
 spec:
-  clusterIP: 10.105.122.144
-  clusterIPs:
-  - 10.105.122.144
-  externalTrafficPolicy: Cluster
-  internalTrafficPolicy: Cluster
-  ipFamilies:
-  - IPv4
-  ipFamilyPolicy: SingleStack
-  ports:
-  - nodePort: 30532
-    port: 5432
-    protocol: TCP
-    targetPort: 5432
+  type: ClusterIP
   selector:
     app: postgres-db
-  sessionAffinity: None
-  type: NodePort
-status:
-  loadBalancer: {}
+  ports:
+    - port: 5432
+      protocol: TCP
+      targetPort: 5432
+
