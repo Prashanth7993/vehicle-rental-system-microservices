@@ -7,7 +7,7 @@ pipeline {
 
     environment {
         REGISTRY = "vehicle-rental-system-microservices" // Replace with Docker Hub, ECR, or GCR
-        IMAGE_TAG = "v2.0.1"
+        IMAGE_TAG = "v2.0.2"
         HELM_RELEASE = "microservices"
         HELM_CHART_PATH = "./my-microservices-chart"
     }
