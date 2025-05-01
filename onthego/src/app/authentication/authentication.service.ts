@@ -25,7 +25,7 @@ export class AuthenticationService {
   }
 
   register(data: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl + '/auth//user/register', data,{headers:this.headers});
+    return this.http.post<any>(this.apiUrl + '/auth/user/register', data,{headers:this.headers});
   } 
 
   checkAuthentication():Observable<any>{
