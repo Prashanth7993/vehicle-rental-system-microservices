@@ -55,7 +55,7 @@ pipeline {
             steps {
                 sh """
 		    cd backend-helm-chart
-                    helm upgrade --install microservice .
+                    helm upgrade --install test .
                 """
             }
         }
