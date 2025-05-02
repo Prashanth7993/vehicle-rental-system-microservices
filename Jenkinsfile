@@ -51,13 +51,14 @@ pipeline {
             }
         }
 
-        // stage('Deploying backend kubernetes with Helm') {
-        //     steps {
-        //         sh """
-        //             helm upgrade --install microservice .
-        //         """
-        //     }
-        // }
+        stage('Deploying backend kubernetes with Helm') {
+            steps {
+                sh """
+		    cd backend-helm-chart
+                    helm upgrade --install microservice .
+                """
+            }
+        }
     }
 
     post {
