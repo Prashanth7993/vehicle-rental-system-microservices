@@ -7,7 +7,7 @@ pipeline {
 
     environment {
         REGISTRY = "vehicle-rental-system-microservices" // Replace with Docker Hub, ECR, or GCR
-        IMAGE_TAG = "v2.0.2"
+        IMAGE_TAG = "v2.0.3"
         HELM_RELEASE = "microservices"
         HELM_CHART_PATH = "./my-microservices-chart"
     }
@@ -25,9 +25,9 @@ pipeline {
                      withCredentials([usernamePassword(credentialsId: 'Docker_Hub_Credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]){
                         sh """
                         cd onthego
-                        docker build -t $DOCKER_USER/frontend-onthego:v2.0.9 .
+                        docker build -t $DOCKER_USER/frontend-onthego:v2.1.0 .
                         docker login -u $DOCKER_USER -p $DOCKER_PASS
-                        docker push $DOCKER_USER/frontend-onthego:v2.0.9
+                        docker push $DOCKER_USER/frontend-onthego:v2.1.0
                         """
                      }
 
